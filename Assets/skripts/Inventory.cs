@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Image = UnityEngine.UI.Image;
 
 public class Inventory : MonoBehaviour
 {
@@ -35,6 +36,7 @@ public class Inventory : MonoBehaviour
                         if (item[i].id==0)
                         {
                             item[i] = hit.collider.GetComponent<Item>();
+                            displa();
                             Destroy(hit.collider.GetComponent<Item>().gameObject);
                             break;
                         }
@@ -60,6 +62,21 @@ public class Inventory : MonoBehaviour
     }
     void displa()
     {
-
+        for (int i = 0; i < item.Count; ++i)
+        {
+            Transform cell = cellcontanir.transform.GetChild(i);
+            Transform icon = cell.GetChild(0);
+            Image img = icon.GetComponent<Image>();
+            if (item[i].id != 0)
+            {
+                img.sprite = Resources.Load<Sprite>(item[i].pachIcon);
+                img.enabled = true;
+            }
+            else
+            {
+                img.sprite = null;
+                img.enabled = false;
+            }
+        }
     }
 }
