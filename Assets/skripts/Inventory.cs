@@ -1,18 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
+using static Unity.Burst.Intrinsics.X86.Avx;
 using Image = UnityEngine.UI.Image;
 
 public class Inventory : MonoBehaviour
 {
     List<Item> item;
     public GameObject cellcontanir;
+    protected bool cat1;
+    [SerializeField]
+    private GameObject g;
+    void menu()
+    {
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            if (g.activeSelf)
+            {
+                g.SetActive(true);
+                cat1 = false;
+            }
+            else
+            {
+                g.SetActive(false);
+                cat1 = true;
+            }
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
         item = new List<Item>();
         cellcontanir.SetActive(false);
+        g.SetActive(false);
         for (int i = 0; i < cellcontanir.transform.childCount; i++)
         {
             item.Add(new Item());
@@ -22,6 +44,7 @@ public class Inventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        menu();
         Open();
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -49,14 +72,17 @@ public class Inventory : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            if (cellcontanir.activeSelf)
+            if (cat1 == true)
             {
-                cellcontanir.SetActive(false);
+                if (cellcontanir.activeSelf)
+                {
+                    cellcontanir.SetActive(false);
 
-            }
-            else
-            {
-                cellcontanir.SetActive(true);
+                }
+                else
+                {
+                    cellcontanir.SetActive(true);
+                }
             }
         }
     }
@@ -66,11 +92,15 @@ public class Inventory : MonoBehaviour
         {
             Transform cell = cellcontanir.transform.GetChild(i);
             Transform icon = cell.GetChild(0);
+            Transform count = icon.GetChild(0);
+            Text txt = count.GetComponent<Text>();
             Image img = icon.GetComponent<Image>();
             if (item[i].id != 0)
             {
                 img.sprite = Resources.Load<Sprite>(item[i].pachIcon);
                 img.enabled = true;
+                txt.text = item[i].countItem.ToString();
+                print(txt);
             }
             else
             {
