@@ -91,6 +91,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8721403631841660308}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 410f6cb0bfaa0ae48adba893dd0e732c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6268202486133559765}
   m_SourcePrefab: {fileID: 100100000, guid: 410f6cb0bfaa0ae48adba893dd0e732c, type: 3}
 --- !u!1 &6480159968178049064 stripped
 GameObject:
@@ -119,3 +123,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 35.837807, y: 71.443726, z: 8.013908}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-6268202486133559765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6480159968178049064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d39116c2a2c24049b1b9522a69ed5ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameitem: "\u0422\u043E\u043F\u043E\u0440"
+  id: 1
+  countItem: 0
+  isStak: 0
+  deskriptionItem: "\u0418\u043C \u043C\u043E\u0436\u043D\u043E \u0443\u0431\u0438\u0432\u0430\u0442\u044C
+    \u043C\u043E\u043D\u0441\u0442\u0440\u043E\u0432"
+  pachIcon: Icon/axe
+  pachPrefab: Prefabs/Axe

@@ -12,6 +12,7 @@ public class ContationTest : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
+                print("cat");
                 ConversationManager.Instance.StartConversation(MyCorvation);
             }
         }

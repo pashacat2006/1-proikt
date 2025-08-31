@@ -9,7 +9,7 @@ public class NewBehaviourScript : MonoBehaviour
     [SerializeField]
     private float speed = 3;
     [SerializeField]
-    private float jump = 5;
+    private float jump = 300;
     [SerializeField]
     private bool t;
    
