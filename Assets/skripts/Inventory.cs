@@ -5,12 +5,13 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 using static Unity.Burst.Intrinsics.X86.Avx;
 using Image = UnityEngine.UI.Image;
+using TMPro;
 
 public class Inventory : MonoBehaviour
 {
     List<Item> item;
     public GameObject cellcontanir;
-    protected bool cat1;
+    protected bool cat1 = true;
     [SerializeField]
     private GameObject g;
     void menu()
@@ -93,7 +94,7 @@ public class Inventory : MonoBehaviour
             Transform cell = cellcontanir.transform.GetChild(i);
             Transform icon = cell.GetChild(0);
             Transform count = icon.GetChild(0);
-            Text txt = count.GetComponent<Text>();
+            TextMeshProUGUI txt = count.GetComponent<TextMeshProUGUI>();
             Image img = icon.GetComponent<Image>();
             if (item[i].id != 0)
             {
