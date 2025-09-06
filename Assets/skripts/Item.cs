@@ -12,5 +12,6 @@ public class Item : MonoBehaviour
     public string deskriptionItem;
     public string pachIcon;
     public string pachPrefab;
+    public bool one;
 
 }

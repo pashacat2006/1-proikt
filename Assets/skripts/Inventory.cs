@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.Burst.CompilerServices;
 
 public class Inventory : MonoBehaviour
 {
@@ -11,7 +12,6 @@ public class Inventory : MonoBehaviour
     private List<Item> item;
 
     [SerializeField] private GameObject g;
-
     void menu()
     {
         if (Input.GetKeyDown(KeyCode.O))
@@ -57,20 +57,64 @@ public class Inventory : MonoBehaviour
         {
             if (hit.collider.GetComponent<Item>())
             {
-                for (int i = 0; i < item.Count; i++)
-                {
-                    if (item[i].id == 0)
-                    {
-                        item[i] = hit.collider.GetComponent<Item>();
-                        displa();
-                        Destroy(hit.collider.GetComponent<Item>().gameObject);
-                        break;
-                    }
-                }
+                on3(hit.collider.GetComponent<Item>());
             }
         }
     }
-
+    void on3(Item currentItem)
+    {
+        if (currentItem.isStak)
+        {
+            on2(currentItem);
+        }
+        else
+        {
+            on1(currentItem);
+        }
+        if (currentItem.one == true)
+        {
+            on4(currentItem);
+        }
+    }
+    void on1(Item currentItem)
+    {
+        for (int i = 0; i < item.Count; i++)
+        {
+            if (item[i].id == 0)
+            {
+                item[i] = currentItem;
+                item[i].countItem = 1;
+                displa();
+                Destroy(currentItem.gameObject);
+                break;
+            }
+        }
+    }
+    void on2(Item currentItem)
+    {
+        for (int i = 0; i < item.Count; i++)
+        {
+            if (item[i].id ==currentItem.id)
+            {
+                item[i].countItem++;
+                displa();
+                Destroy(currentItem.gameObject);
+                return;
+            }
+        }
+        on1(currentItem);
+    }
+    void on4(Item currentItem)
+    {
+        for (int i = 0; i < item.Count; i++)
+        {
+            if (item[i].id == currentItem.id)
+            {
+                print("one");
+                return;
+            }
+        }
+    }
     void Open()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
@@ -97,12 +141,16 @@ public class Inventory : MonoBehaviour
             {
                 img.sprite = Resources.Load<Sprite>(item[i].pachIcon);
                 img.enabled = true;
-                txt.text = item[i].countItem.ToString();
-                print(txt);
+                if (item[i].countItem > 1)
+                {
+                    txt.text = item[i].countItem.ToString();
+                    print(txt);
+                }
             }
             else
             {
                 img.sprite = null;
+                txt.text = null;
                 img.enabled = false;
             }
         }
