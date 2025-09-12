@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.UI;
 
 public class GameData
 {
@@ -11,11 +12,13 @@ public class GameData
 
 public class save : MonoBehaviour
 {
-    private string _fileName = "MySave.cat";
+    private string _fileName = "MySave.pasha";
 
     private string _path;
 
     public GameData player;
+    public GameObject playerg;
+    public Image healch1;
 
     private void Start()
     {
@@ -23,13 +26,13 @@ public class save : MonoBehaviour
         print("Save path: " + _path);
 
         player = new GameData();
-
-        player.Position = new Vector3(0, 10, 2);
-        player.Health = 100;
+        Load();
     }
 
     public void Save()
     {
+        player.Position = playerg.transform.position;
+        player.Health = healch1.fillAmount;
         string json = JsonUtility.ToJson(player);
         File.WriteAllText(_path, json);
     }
@@ -39,5 +42,7 @@ public class save : MonoBehaviour
         string file = File.ReadAllText(_path);
 
         player = JsonUtility.FromJson<GameData>(file);
+        playerg.transform.position = player.Position ;
+        healch1.fillAmount = player.Health;
     }
 }

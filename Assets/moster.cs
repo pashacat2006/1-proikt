@@ -7,6 +7,7 @@ public class moster : MonoBehaviour
 {
     [SerializeField]
     private NavMeshAgent agent;
+    public GameData monster;
     [SerializeField]
     private GameObject player;
     private void Update()
