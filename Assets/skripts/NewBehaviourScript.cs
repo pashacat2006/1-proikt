@@ -20,9 +20,10 @@ public class NewBehaviourScript : MonoBehaviour
     {
         t = true;
     }
-    private void Update()
+    private void FixedUpdate()
     {
         Move();
+        LimitSpeed();
     }
     private void Move()
     {
@@ -46,6 +47,14 @@ public class NewBehaviourScript : MonoBehaviour
         {
             phy.AddForce(transform.up * jump);
             t = false;
+        }
+    }
+
+    private void LimitSpeed()
+    {
+        if (phy.linearVelocity.magnitude > 10)
+        {
+            phy.linearVelocity = phy.linearVelocity.normalized * 10;
         }
     }
 }

@@ -10,18 +10,43 @@ public class moster : MonoBehaviour
     public GameData monster;
     [SerializeField]
     private GameObject player;
+
+    [SerializeField] private Animator _animator;
+
+    private void Start()
+    {
+        _animator.enabled = true;
+    }
+
     private void Update()
     {
         Move();
+
     }
     void Move()
     {
-        if (Vector3.Distance(transform.position,player.transform.position)< 10)
+        bool isWalk = _animator.GetBool("IsWalk");
+        float viewRange = 10;
+
+
+        if (Vector3.Distance(transform.position,player.transform.position) < viewRange)
         {
+            if (!isWalk)
+            {
+                _animator.SetBool("IsWalk", true);
+                print(_animator.GetBool("IsWalk"));
+            }
+
+            print("walk");
             agent.SetDestination(player.transform.position);
         }
-        else
+        else if(Vector3.Distance(transform.position, player.transform.position) > viewRange)
         {
+            print("not walk");
+            if (isWalk)
+            {
+                _animator.SetBool("IsWalk", false);
+            }
             agent.ResetPath();
         }
     }
