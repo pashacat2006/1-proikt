@@ -39,10 +39,11 @@ public class save : MonoBehaviour
 
     public void Load()
     {
-        string file = File.ReadAllText(_path);
+        if (!File.Exists(_path)) { return; }
 
+        string file = File.ReadAllText(_path);
         player = JsonUtility.FromJson<GameData>(file);
-        playerg.transform.position = player.Position ;
+        playerg.transform.position = player.Position;
         healch1.fillAmount = player.Health;
     }
 }
