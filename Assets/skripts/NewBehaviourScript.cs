@@ -11,15 +11,11 @@ public class NewBehaviourScript : MonoBehaviour
     [SerializeField]
     private float jump = 300;
     [SerializeField]
-    private bool t;
-   
-    [SerializeField]
     private Rigidbody phy;
     private Transform camer;
-    void OnCollisionEnter()
-    {
-        t = true;
-    }
+
+    [SerializeField] private TerrainChecker _terrainChecker;
+
     private void FixedUpdate()
     {
         Move();
@@ -27,26 +23,31 @@ public class NewBehaviourScript : MonoBehaviour
     }
     private void Move()
     {
-        if (Input.GetKey(KeyCode.W))
+        bool isGround = _terrainChecker.IsCollide;
+
+        if (Input.GetKey(KeyCode.W) && isGround)
         {
             phy.AddForce(transform.forward * speed);
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S) && isGround)
         {
             phy.AddForce(-transform.forward * speed);
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) && isGround)
         {
             phy.AddForce(transform.right * speed);
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) && isGround)
         {
             phy.AddForce(-transform.right * speed);
         }
-        if (Input.GetKeyDown(KeyCode.Space) && t == true)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            phy.AddForce(transform.up * jump);
-            t = false;
+            if(isGround)
+            {
+                phy.linearVelocity = new Vector3(phy.linearVelocity.x, 0, phy.linearVelocity.z);
+                phy.AddForce(Vector3.up * jump);
+            }
         }
     }
 
