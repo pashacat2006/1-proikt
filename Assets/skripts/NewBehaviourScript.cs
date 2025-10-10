@@ -45,7 +45,7 @@ public class NewBehaviourScript : MonoBehaviour
         {
             if(isGround)
             {
-                phy.linearVelocity = new Vector3(phy.linearVelocity.x, 0, phy.linearVelocity.z);
+                phy.velocity = new Vector3(phy.velocity.x, 0, phy.velocity.z);
                 phy.AddForce(Vector3.up * jump);
             }
         }
@@ -53,9 +53,9 @@ public class NewBehaviourScript : MonoBehaviour
 
     private void LimitSpeed()
     {
-        if (phy.linearVelocity.magnitude > 10)
+        if (phy.velocity.magnitude > 10)
         {
-            phy.linearVelocity = phy.linearVelocity.normalized * 10;
+            phy.velocity = phy.velocity.normalized * 10;
         }
     }
 }

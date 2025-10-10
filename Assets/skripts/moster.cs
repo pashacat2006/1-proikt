@@ -10,7 +10,6 @@ public class moster : MonoBehaviour
     public GameData monster;
     [SerializeField]
     private GameObject player;
-
     [SerializeField] private Animator _animator;
 
     private void Start()
