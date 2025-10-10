@@ -7,10 +7,6 @@ public class healch : MonoBehaviour
 {
     public  Image Heal;
     public float value;
-    private void Start()
-    {
-        Heal = GetComponent<Image>();
-    }
     public  void SetHealthBarValue(float value)
     {
         Heal.fillAmount = value;
