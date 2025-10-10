@@ -998,6 +998,20 @@ MonoBehaviour:
   rayLength: 0.5
   rayCount: 400
   offset: {x: 0, y: -0.56, z: 0}
+--- !u!114 &72343859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72343851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ec64f5474e9ee946bcf4e1a0c3f759e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Heal: {fileID: 1101982412}
+  value: 0.1
 --- !u!1001 &89219798
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3988,6 +4002,7 @@ MonoBehaviour:
   agent: {fileID: 576909178}
   player: {fileID: 72343851}
   _animator: {fileID: 0}
+  hel: {fileID: 0}
 --- !u!114 &576909176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6777,6 +6792,7 @@ MonoBehaviour:
   agent: {fileID: 1299602900}
   player: {fileID: 72343851}
   _animator: {fileID: 8164078558878750731}
+  hel: {fileID: 72343859}
 --- !u!224 &1333008758 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5403922482749457019, guid: 8d30cd018f9442444aafd1af6df3ca6f,
@@ -8952,6 +8968,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 72343858}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5cfcf9575ab39b54abde620ad8b138ca,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 72343859}
   m_SourcePrefab: {fileID: 100100000, guid: 5cfcf9575ab39b54abde620ad8b138ca, type: 3}
 --- !u!224 &1533837560 stripped
 RectTransform:

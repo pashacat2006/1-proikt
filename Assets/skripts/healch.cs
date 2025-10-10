@@ -5,17 +5,17 @@ using UnityEngine.UI;
 
 public class healch : MonoBehaviour
 {
-    public static Image Heal;
-    float value;
+    public  Image Heal;
+    public float value;
     private void Start()
     {
         Heal = GetComponent<Image>();
     }
-    public static void SetHealthBarValue(float value)
+    public  void SetHealthBarValue(float value)
     {
         Heal.fillAmount = value;
     }
-    public static float GetHealthBarValue()
+    public  float GetHealthBarValue()
     {
         return Heal.fillAmount;    
     }
